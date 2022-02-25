@@ -1,7 +1,7 @@
 export const MenuItems = [
   {
     title: "Network",
-    path: "/marketing",
+    path: "/network",
     cName: "dropdown-link",
   },
   {
