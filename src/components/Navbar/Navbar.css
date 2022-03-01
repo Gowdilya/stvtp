@@ -22,8 +22,9 @@
   list-style: none;
   text-align: center;
   width: 70vw;
-  justify-content: end;
+
   margin-right: 2rem;
+  height: 100%;
 }
 
 .nav-item {

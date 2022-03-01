@@ -1,9 +1,9 @@
 import React from "react";
 import Navbar from "./components/Navbar/Navbar";
-import Home from "./components/pages/Home";
-import Metrics from "./components/pages/Metrics/index.tsx";
+import Home from "./pages/Home";
+import Metrics from "./pages/Metrics/index.tsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SignUp from "./components/pages/SignUp";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
