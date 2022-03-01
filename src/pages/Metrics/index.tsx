@@ -10,7 +10,7 @@ export default function Metrics() {
   );
   return <div className="container mx-auto">
       Metrics
-      <div> Average Score: {Math.round((score1 + score2 + score3 + score4)/3)}</div>
+      <div> Average Score: {Math.round((score1 + score2 + score3 + score4)/4)}</div>
 
           <Slider value={score1} setValue={setScore1} header={"Attentiveness"}/>
 
