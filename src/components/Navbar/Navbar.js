@@ -23,6 +23,11 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ApartmentIcon from "@mui/icons-material/Apartment";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import NetworkCheckIcon from "@mui/icons-material/NetworkCheck";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import AddAlertIcon from "@mui/icons-material/AddAlert";
 
 const StyledNav = styled.nav`
   background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
@@ -126,18 +131,18 @@ function Navbar() {
                   </AccordionSummary>
                   <AccordionDetails>
                     <div>
-                      <Link to="/user-management">
-                        <BarChartIcon /> User Management
+                      <Link to="/user-management" onClick={closeMobileMenu}>
+                        <AccountCircleIcon /> User Management
                       </Link>
                     </div>
                     <div>
-                      <Link to="/buildings">
+                      <Link to="/buildings" onClick={closeMobileMenu}>
                         <BarChartIcon /> Buildings
                       </Link>
                     </div>
                     <div>
-                      <Link to="/apartments">
-                        <BarChartIcon /> Apartments
+                      <Link to="/apartments" onClick={closeMobileMenu}>
+                        <ApartmentIcon /> Apartments
                       </Link>
                     </div>
                   </AccordionDetails>
@@ -154,9 +159,21 @@ function Navbar() {
                     Settings{" "}
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Link to="/buildings">
-                      <BarChartIcon /> Buildings
-                    </Link>
+                    <div>
+                      <Link to="/network" onClick={closeMobileMenu}>
+                        <NetworkCheckIcon /> Network
+                      </Link>
+                    </div>
+                    <div>
+                      <Link to="/alert-thresholds" onClick={closeMobileMenu}>
+                        <AddAlertIcon /> Alert Thresholds
+                      </Link>
+                    </div>
+                    <div>
+                      <Link to="/my-profile" onClick={closeMobileMenu}>
+                        <AccountBoxIcon /> Profile
+                      </Link>
+                    </div>
                   </AccordionDetails>
                 </Accordion>
               </div>
