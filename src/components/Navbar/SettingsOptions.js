@@ -1,4 +1,4 @@
-export const MenuItems = [
+export const SettingsOptions = [
   {
     title: "Network",
     path: "/network",
@@ -6,17 +6,17 @@ export const MenuItems = [
   },
   {
     title: "Alert Thresholds",
-    path: "/consulting",
+    path: "/alert-thresholds",
     cName: "dropdown-link",
   },
   {
     title: "Sharing & Notifications",
-    path: "/design",
+    path: "/sharing-notifications",
     cName: "dropdown-link",
   },
   {
     title: "My Profile",
-    path: "/development",
+    path: "/my-profile",
     cName: "dropdown-link",
   },
 ];
