@@ -1,4 +1,4 @@
-.dropdown-menu {
+.settings-dropdown-menu {
   background: red;
   width: 200px;
   position: absolute;
@@ -6,30 +6,30 @@
   list-style: none;
   text-align: start;
 }
-.dropdown-menu li {
+.settings-dropdown-menu li {
   background: #6d7c8d;
   cursor: pointer;
 }
 
-.dropdown-menu li:hover {
+.settings-dropdown-menu li:hover {
   background: #1888ff;
 }
 @media screen and (max-width: 960px) {
-  .dropdown-menu {
+  .settings-dropdown-menu {
     width: 100%;
     text-align: center;
     width: 100%;
     text-align: center;
-    position: absolute;
-    top: 120px;
+    position: fixed;
+    top: 400px;
   }
-  .dropdown-menu li {
+  .settings-dropdown-menu li {
     background: #6d7c8d;
     cursor: pointer;
   }
 }
 
-.dropdown-menu.clicked {
+.settings-dropdown-menu.clicked {
   display: none;
 }
 

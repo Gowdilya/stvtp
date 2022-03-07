@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import Dropdown from "./Dropdown";
+import Dropdown from "./SettingsDropDown/Dropdown";
+import AdminDropdown from "./AdminDropDown/Dropdown";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -136,7 +137,7 @@ function Navbar() {
 
               <li className="nav-item" onClick={handleAdminExpand}>
                 {openAdmin && (
-                  <Dropdown
+                  <AdminDropdown
                     closeMobileMenu={closeMobileMenu}
                     MenuItems={MenuItems}
                   />
