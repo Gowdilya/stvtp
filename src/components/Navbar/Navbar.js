@@ -18,6 +18,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { MenuItems } from "./AdminOptions";
 import { SettingsOptions } from "./SettingsOptions";
 import TableChartIcon from "@mui/icons-material/TableChart";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 
 const StyledNav = styled.nav`
   background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
@@ -143,7 +144,7 @@ function Navbar() {
                   />
                 )}
                 <Link to="/" className="nav-links">
-                  <SettingsIcon />
+                  <SupervisorAccountIcon />
                   Admin{" "}
                   {openAdmin ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
                 </Link>
