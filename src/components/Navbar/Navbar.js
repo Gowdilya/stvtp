@@ -19,6 +19,10 @@ import { MenuItems } from "./AdminOptions";
 import { SettingsOptions } from "./SettingsOptions";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const StyledNav = styled.nav`
   background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
@@ -90,6 +94,7 @@ function Navbar() {
                   <HomeIcon /> Home
                 </Link>
               </li>
+
               <li className="nav-item">
                 <Link
                   to="/reports"
@@ -99,69 +104,62 @@ function Navbar() {
                   <TableChartIcon /> Reports
                 </Link>
               </li>
+
               <li className="nav-item">
                 <Link
                   to="/analytics"
                   className="nav-links"
                   onClick={closeMobileMenu}
                 >
-                  <BarChartIcon /> Analytics
+                  <TimelineIcon /> Analytics
                 </Link>
               </li>
-              {/* <li className="nav-item">
-                <Link
-                  to="/metrics"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
-                  <BarChartIcon /> Metrics
-                </Link>
-              </li> */}
-              {/* <li className="nav-item">
-                <Link
-                  to="/alerts"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
-                  <FireplaceIcon /> Alerts
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/trends"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
-                  <TimelineIcon /> Trends
-                </Link>
-              </li> */}
-
-              <li className="nav-item" onClick={handleAdminExpand}>
-                {openAdmin && (
-                  <AdminDropdown
-                    closeMobileMenu={closeMobileMenu}
-                    MenuItems={MenuItems}
-                  />
-                )}
-                <Link to="/" className="nav-links">
-                  <SupervisorAccountIcon />
-                  Admin{" "}
-                  {openAdmin ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-                </Link>
-              </li>
-              <li className="nav-item" onClick={handleSettingsExpand}>
-                {openSettings && (
-                  <Dropdown
-                    closeMobileMenu={closeMobileMenu}
-                    MenuItems={SettingsOptions}
-                  />
-                )}
-                <Link to="/services" className="nav-links">
-                  <SettingsIcon />
-                  Settings{" "}
-                  {openSettings ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-                </Link>
-              </li>
+              <div>
+                <Accordion>
+                  <AccordionSummary
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                    expandIcon={<ExpandMoreIcon />}
+                  >
+                    <SupervisorAccountIcon />
+                    Admin{" "}
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <div>
+                      <Link to="/user-management">
+                        <BarChartIcon /> User Management
+                      </Link>
+                    </div>
+                    <div>
+                      <Link to="/buildings">
+                        <BarChartIcon /> Buildings
+                      </Link>
+                    </div>
+                    <div>
+                      <Link to="/apartments">
+                        <BarChartIcon /> Apartments
+                      </Link>
+                    </div>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+              <div>
+                <Accordion>
+                  <AccordionSummary
+                    aria-controls="panel2a-content"
+                    id="panel2a-header"
+                    expandIcon={<ExpandMoreIcon />}
+                  >
+                    <SettingsIcon />
+                    Settings{" "}
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Link to="/buildings">
+                      <BarChartIcon /> Buildings
+                    </Link>
+                  </AccordionDetails>
+                </Accordion>
+              </div>
               <li>
                 <Link
                   to="/log-out"
