@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Metrics from "./pages/Metrics/index.tsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from "./pages/SignUp";
+import Reports from "./pages/Reports";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/marketing" element={<SignUp />} />
         <Route path="/consulting" element={<SignUp />} />
+        <Route path="/reports" element={<Reports />} />
       </Routes>
     </Router>
   );
