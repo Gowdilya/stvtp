@@ -9,6 +9,8 @@ import {
   LabelList,
 } from "recharts";
 
+import styled from "styled-components";
+
 const renderCustomizedLabel = (props) => {
   const { content, ...rest } = props;
 

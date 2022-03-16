@@ -1,4 +1,4 @@
-import { useTable } from 'react-table';
+import { useTable , useSortBy} from 'react-table';
 import React from 'react';
 import {data } from './tableDataSet.js';
 //import {BarGraph} from './stackedBarGraph';
@@ -57,7 +57,7 @@ import SingleStackedBar from './singleStackedBar.js';
      prepareRow,
      //Added TS ignore Outdated ts support in for this library
      // @ts-ignore
-   } = useTable({ columns, data })
+   } = useTable({ columns, data }, useSortBy)
  
    return (
      <>
@@ -67,7 +67,8 @@ import SingleStackedBar from './singleStackedBar.js';
            <tr {...headerGroup.getHeaderGroupProps()}>
              {headerGroup.headers.map(column => (
                <th
-                 {...column.getHeaderProps()}
+               // @ts-ignore
+                 {...column.getHeaderProps(column.getSortByToggleProps())}
                  style={{
                    borderBottom: 'solid 3px red',
                    background: 'aliceblue',
@@ -76,6 +77,13 @@ import SingleStackedBar from './singleStackedBar.js';
                  }}
                >
                  {column.render('Header')}
+                 <span>
+                    {column.isSorted
+                      ? column.isSortedDesc
+                        ? ' 🔽'
+                        : ' 🔼'
+                      : ''}
+                  </span>
                </th>
              ))}
            </tr>
