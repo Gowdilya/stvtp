@@ -1,34 +1,20 @@
 import { useTable } from 'react-table';
 import React from 'react';
+import {data } from './tableDataSet.js';
+//import {BarGraph} from './stackedBarGraph';
+import DashboardView from './dashboardView.js';
+
+import SingleStackedBar from './singleStackedBar.js';
  
  export default function Reports() {
-   const data = React.useMemo(
-     () => [
-       {
-        col1: '2463',
-        col2:"100 Mornelle Court",
-        col3: '511',
-        col4:'1609459390',
-        col5: '8'
-       },
-       {
-        col1: '2463',
-        col2:"116  Morningside",
-        col3: '511',
-        col4:'1609459390',
-        col5: '8'
-       },
-       {
-        col1: '2463',
-        col2:"300 Alton Towers Circle",
-        col3: '511',
-        col4:'1609459390',
-        col5: '8'
-       },
-     ],
-     []
-   )
- 
+
+  // @ts-ignore
+  const graphData = ({value, columnProps}) => {
+    return <div className='w-96 block'>
+        <SingleStackedBar data={value}/>
+      </div>;
+  }
+
    const columns = React.useMemo(
      () => [
        {
@@ -47,13 +33,21 @@ import React from 'react';
         Header: 'TimeStamp',
         accessor: 'col4',
       },
+      
       {
         Header: 'Event ID',
         accessor: 'col5',
       },
+      {
+        Header: 'Graph',
+        accessor: 'col6',
+        Cell: graphData
+      },
      ],
      []
    )
+
+
 
    const {
      getTableProps,
@@ -66,6 +60,7 @@ import React from 'react';
    } = useTable({ columns, data })
  
    return (
+     <>
      <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
        <thead>
          {headerGroups.map(headerGroup => (
@@ -110,5 +105,7 @@ import React from 'react';
          })}
        </tbody>
      </table>
+     <DashboardView/>
+     </>
    )
  }
