@@ -2,21 +2,14 @@ import React, { useState } from "react";
 import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import Dropdown from "./SettingsDropDown/Dropdown";
-import AdminDropdown from "./AdminDropDown/Dropdown";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import styled from "styled-components";
 import HomeIcon from "@mui/icons-material/Home";
 import BarChartIcon from "@mui/icons-material/BarChart";
-import FireplaceIcon from "@mui/icons-material/Fireplace";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { MenuItems } from "./AdminOptions";
-import { SettingsOptions } from "./SettingsOptions";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import Accordion from "@mui/material/Accordion";
@@ -43,7 +36,10 @@ const StyledContainer = styled.div`
   justify-content: center;
   font-size: 1.2rem;
   align-items: center;
-  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  position: fixed;
+  width: 100%;
+  background: #242222;
+  z-index: 999;
 `;
 
 const StyledLink = styled(Link)`
@@ -60,27 +56,33 @@ const StyledLink = styled(Link)`
 
 function Navbar() {
   const [click, setClick] = useState(false);
-  const [openSettings, setOpenSettings] = useState(false);
-  const [openAdmin, setOpenAdmin] = useState(false);
+  const [accordian, setAccordian] = useState(0);
+
+  //const [openSettings, setOpenSettings] = useState(false);
+  //const [openAdmin, setOpenAdmin] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => {
     setClick(false);
   };
-
-  const handleSettingsExpand = () => {
-    setOpenSettings(!openSettings);
+  const handleExpand = (expanded, currentAccordian) => {
+    console.log("handleExpand");
+    console.log(expanded);
+    if (expanded) {
+      console.log("expanded");
+      setAccordian(currentAccordian);
+    } else {
+      console.log("not expanded");
+      setAccordian(0); //close
+    }
   };
-
-  const handleAdminExpand = () => {
-    setOpenAdmin(!openAdmin);
-  };
+  console.log("navbar");
   return (
     <>
       <StyledContainer>
         <div className="inline-block">
           <StyledLink to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            STVTP
+            COOKTOP SAFETY
           </StyledLink>
         </div>
 
@@ -119,8 +121,13 @@ function Navbar() {
                   <TimelineIcon /> Analytics
                 </Link>
               </li>
-              <div>
-                <Accordion>
+              <div className="w-60 m-auto mt-0 mb-0">
+                <Accordion
+                  onChange={(event, expanded) => {
+                    handleExpand(expanded, 1);
+                  }}
+                  expanded={accordian === 1 ? true : false}
+                >
                   <AccordionSummary
                     aria-controls="panel1a-content"
                     id="panel1a-header"
@@ -148,8 +155,13 @@ function Navbar() {
                   </AccordionDetails>
                 </Accordion>
               </div>
-              <div>
-                <Accordion>
+              <div className="w-60 m-auto mt-0 mb-0">
+                <Accordion
+                  onChange={(event, expanded) => {
+                    handleExpand(expanded, 2);
+                  }}
+                  expanded={accordian === 2 ? true : false}
+                >
                   <AccordionSummary
                     aria-controls="panel2a-content"
                     id="panel2a-header"
@@ -178,13 +190,15 @@ function Navbar() {
                 </Accordion>
               </div>
               <li>
-                <Link
-                  to="/log-out"
-                  className="nav-links-mobile"
-                  onClick={closeMobileMenu}
-                >
-                  <LogoutIcon /> Log Out
-                </Link>
+                <div className="w-80 m-auto mt-0 mb-0">
+                  <Link
+                    to="/log-out"
+                    className="nav-links-mobile"
+                    onClick={closeMobileMenu}
+                  >
+                    <LogoutIcon /> Log Out
+                  </Link>
+                </div>
               </li>
             </ul>
             <Button />
