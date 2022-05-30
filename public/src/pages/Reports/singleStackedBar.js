@@ -9,55 +9,36 @@ import {
   LabelList,
 } from "recharts";
 
-import {
-  buildEventsOneBuilding,
-  buildEventsAllBuildings,
-} from "../../services/eventsMockService";
+import styled from "styled-components";
 
 const renderCustomizedLabel = (props) => {
   const { content, ...rest } = props;
 
-  return <Label {...rest} fontSize="12" fill="#FFFFFF" fontWeight="Bold" />;
+  return (
+    <Label
+      {...rest}
+      value={rest.value + "%"} ///overide the value to add %
+      fontSize="16"
+      fill="#FFFFFF"
+      fontWeight="Bold"
+    />
+  );
 };
 
-export default function DashboardView() {
-  //console.log("adam was here");//////////////////////
-  const buildingId = 9549;
-  const days = 365;
-  const outAllEvents = buildEventsAllBuildings(days);
-  //console.log(outAllEvents);
-  //const output = buildEventsOneBuilding(buildingId, days);
-  //console.log(output);
-  ///////////
-
+export default function SingleStackedBar(props) {
   const data = [
-    { name: "NE Send", completed: 230, failed: 335, inprogress: 453 },
-    { name: "NE Resend", completed: 335, failed: 330, inprogress: 345 },
     {
-      name: "Miles Orchestrator",
-      completed: 537,
-      failed: 243,
-      inprogress: 2110,
+      name: "NE Send",
+      completed: props.data[0],
+      failed: props.data[1],
+      inprogress: props.data[2],
     },
-    {
-      name: "Commissions Payment Orch",
-      completed: 132,
-      failed: 328,
-      inprogress: 540,
-    },
-    {
-      name: "Business Integrators",
-      completed: 530,
-      failed: 145,
-      inprogress: 335,
-    },
-    { name: "SmartTrack", completed: 538, failed: 312, inprogress: 110 },
   ];
 
   return (
     <div className="content c-white">
-      <h1>Dashboard</h1>
-      <ResponsiveContainer height={250} width={"100%"}>
+      {/* <h1>Dashboard</h1> */}
+      <ResponsiveContainer height={50} width={"100%"}>
         <BarChart
           layout="vertical"
           data={data}
@@ -66,6 +47,7 @@ export default function DashboardView() {
         >
           <XAxis hide type="number" />
           <YAxis
+            hide
             type="category"
             dataKey="name"
             stroke="#FFFFFF"

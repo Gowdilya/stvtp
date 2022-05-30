@@ -1,0 +1,13 @@
+.building-table{
+    tbody{
+        tr:hover{
+            z-index: 9999;
+            border: solid 4px  #1888ff;
+            cursor: pointer;
+            td{
+                background-color: #bbdefb !important;
+            }
+
+        }
+    }
+}
